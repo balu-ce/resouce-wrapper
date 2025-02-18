@@ -1,0 +1,20 @@
+apiVersion: core.resource-wrapper.io/v1alpha1
+kind: NamespaceClass
+metadata:
+  name: public-network
+spec:
+  networkPolicyTemplate:
+    podSelector: {}
+    policyTypes:
+    - Ingress
+    ingress:
+    - from:
+        - ipBlock:
+            cidr: 192.168.0.1/10 # Allow traffic from anywhere (public internet)
+      ports:
+        - protocol: TCP
+          port: 80   # Allow HTTP traffic
+        - protocol: TCP
+          port: 443  # Allow HTTPS traffic
+  serviceAccountTemplate:
+    automountServiceAccountToken: true
