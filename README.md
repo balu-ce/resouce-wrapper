@@ -11,11 +11,6 @@ go build -o operator .
 
 2. Run locally (requires kubeconfig):
 ```bash
-./operator --kubeconfig=$HOME/.kube/config
-```
-
-By using make command,
-```bash
 make generate
 make run
 ```
